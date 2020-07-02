@@ -4,6 +4,8 @@ import Persons from '../components/Persons/Persons.js';
 //import Radium,{StyleRoot} from 'radium'
 import Aux from '../hoc/Aux.js'
 
+import AuthContext from '../context/auth-context.js'
+
 
 import './App.css';
 
@@ -197,7 +199,9 @@ componentDidUpdate(prevProps,prevState){
 
 
         </button>
-        {this.state.showCockpit ? (
+
+        <AuthContext.Provider value={{authenticate:this.state.IsAuthenticated,login:this.loginHandler}}> 
+           {this.state.showCockpit ? (
          <Cockpit 
          login={this.loginHandler}
 
@@ -207,6 +211,8 @@ componentDidUpdate(prevProps,prevState){
               ) : null      }
         
         {persons}
+
+        </AuthContext.Provider>
 
          
        

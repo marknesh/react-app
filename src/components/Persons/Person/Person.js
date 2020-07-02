@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
 import classes from './Person.css'
 
+import AuthContext from '../../../context/auth-context.js'
+
 
 
 import Aux from '../../../hoc/Aux.js'
@@ -46,9 +48,12 @@ class Person extends Component{
 
     }
 
+    static contextType = AuthContext
+
     componentDidMount(){
 
         this.inputElement.current.focus()
+        console.log(this.context.authenticate)
     }
    render(){
     console.log('small renderring')
@@ -56,11 +61,18 @@ class Person extends Component{
       
 
 
-  <Aux>   
-      {this.props.notLoggedIn ? <h2>Authenticated</h2> : <h3>please log in</h3>}  
+  <Aux>  
+      {/* <AuthContext.Consumer  > 
+
+          {(context) => context.authenticate? <h2>Authenticated</h2> : <h3>please log in</h3> }
+            </AuthContext.Consumer> */}
+
+              {this.context.authenticate? <h2>Authenticated</h2> : <h3>please log in</h3> }
+      
     <p key="item1" onClick={this.props.click}>I'm a {this.props.name} and  I am {this.props.age} years old!</p>
     <p  key="item2">{this.props.children}</p>
     <input /*ref={(inputEl) => {this.inputFocus=inputEl}}*/ ref={this.inputElement}  key="item3" type="text" onChange={this.props.change} value={this.props.name}/>
+  
     </Aux>
      
   
