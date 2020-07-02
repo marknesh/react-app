@@ -1,0 +1,24 @@
+.Person{
+    margin:16px auto;
+    width:60%;
+    border:1px solid grey;
+    box-shadow:0 2px 3px grey;
+    padding:16px;
+    text-align: center;
+
+
+
+}
+
+
+@media (min-width:500px){
+ .Person{
+    width:450px
+    }
+
+}
+input{
+
+
+    box-shadow: salmon;
+}
